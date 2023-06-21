@@ -81,7 +81,8 @@ def main():
 
     cap = cv2.VideoCapture()
     ret,frame = cap.read()
-    init_rect = [280,472,70,47]
+    #init_rect = [280,472,70,47]
+    init_rect=cv2.selectROI(frame)
     tracker.init(frame,init_rect)
     while(1):
         ret,frame = cap.read()
