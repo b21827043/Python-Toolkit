@@ -4,7 +4,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import os
-import time
+import timeit
 import argparse
 
 import cv2
@@ -85,7 +85,11 @@ def main():
     tracker.init(frame,init_rect)
     while(1):
         ret,frame = cap.read()
+        start_time = timeit.default_timer()
         outputs = tracker.track(frame)
+        end_time = timeit.default_timer()
+        execution_time = (end_time - start_time) * 1000
+        print("İşlem süresi: {} ms".format(execution_time))
         cv2.imshow("Deneme",frame)
         cv2.waitKey(1)
 
